@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy WAR app to Azure Web App - ELPoyoCRUDApp
+name: Build and deploy JAR app to Azure Web App - ElpoyoCrudapp
 
 on:
   push:
@@ -22,20 +22,13 @@ jobs:
           java-version: '11'
 
       - name: Build with Maven
-        run: |
-          cd usuarios
-          mvn clean install 
-        
-      - name: Construir y empaquetar proyecto
-        run: mvn package
-        working-directory: usuarios
-      
+        run: mvn clean install
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
-          name: usuarios-0.0.1-SNAPSHOT
-          path: 'usuarios/target/usuarios-0.0.1-SNAPSHOT.jar'
+          name: java-app
+          path: '${{ github.workspace }}/target/*.jar'
 
   deploy:
     runs-on: windows-latest
@@ -48,13 +41,13 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
-          name: usuarios-0.0.1-SNAPSHOT
+          name: java-app
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'ELPoyoCRUDApp'
+          app-name: 'ElpoyoCrudapp'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9B35E0EDAC994209824098BB3B565066 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_858B4CC600EF419F996E1574B2E32965 }}
           package: '*.jar'
