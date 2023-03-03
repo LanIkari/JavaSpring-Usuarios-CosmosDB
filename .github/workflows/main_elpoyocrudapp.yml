@@ -49,5 +49,5 @@ jobs:
         with:
           app-name: 'ELPoyoCRUDApp'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D70908727C094417A257B99B10F59E73 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9B35E0EDAC994209824098BB3B565066 }}
           package: '*.war'
