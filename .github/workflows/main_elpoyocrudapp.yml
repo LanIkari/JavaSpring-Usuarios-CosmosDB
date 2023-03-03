@@ -35,7 +35,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: usuarios-0.0.1-SNAPSHOT
-          path: 'usuarios-0.0.1-SNAPSHOT.jar'
+          path: 'usuarios/target/usuarios-0.0.1-SNAPSHOT.jar'
 
   deploy:
     runs-on: windows-latest
