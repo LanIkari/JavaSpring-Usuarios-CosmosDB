@@ -35,7 +35,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: java-app
-          path: 'usuarios/target/java-app.jar'
+          path: 'usuarios/target/java-app.war'
 
   deploy:
     runs-on: windows-latest
@@ -57,4 +57,4 @@ jobs:
           app-name: 'ELPoyoCRUDApp'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9B35E0EDAC994209824098BB3B565066 }}
-          package: '*.jar'
+          package: '*.war'
