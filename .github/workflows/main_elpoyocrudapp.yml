@@ -22,7 +22,13 @@ jobs:
           java-version: '11'
 
       - name: Build with Maven
-        run: mvn clean install
+        run: |
+          cd usuarios
+          mvn clean install 
+        
+      - name: Construir y empaquetar proyecto
+        run: mvn package
+        working-directory: usuarios
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
