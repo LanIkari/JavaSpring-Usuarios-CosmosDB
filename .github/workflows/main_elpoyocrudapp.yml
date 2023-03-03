@@ -26,6 +26,10 @@ jobs:
           cd usuarios
           mvn clean install 
         
+      - name: Construir y empaquetar proyecto
+        run: mvn package
+        working-directory: usuarios
+      
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
